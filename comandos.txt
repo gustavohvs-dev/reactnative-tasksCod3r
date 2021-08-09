@@ -1,0 +1,6 @@
+$ npx react-native init Tasks
+$ npx react-native run-android
+Adicionar libs do package.json $ yarn add LibName
+Criar arquivo react-native.config.js $ npx react-native link
+Criar src/screens e components, configurar arquivo index.js para apontar para TaskList.js
+Caso trabalhe com ios, rodar comando pod install dentro da pasta ios $ pod install
