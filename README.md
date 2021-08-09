@@ -7,7 +7,7 @@ $ npx react-native init Tasks <br>
 $ npx react-native run-android <br>
 $ yarn add async-storage <br>
 $ yarn add axios <br>
-$ yarn add datetimepicker <br>
+$ yarn add @react-native-community/datetimepicker <br>
 $ yarn add moment <br>
 $ yarn add react-native-gesture-handler <br>
 $ yarn add react-native-gravatar <br>
