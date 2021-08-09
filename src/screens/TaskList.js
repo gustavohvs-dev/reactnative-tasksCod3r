@@ -2,8 +2,9 @@
 import React, { Component } from 'react'
 import { View, Text, ImageBackground, StyleSheet, FlatList, Platform, TouchableOpacity } from 'react-native'
 
-//Importando componente Task
+//Importando componentes
 import Task from "../components/Task"
+import ModalAddTask from "./ModalAddTask"
 
 //Importando imagens
 import todayImage from '../../assets/assets/imgs/today.jpg'
@@ -23,6 +24,7 @@ export default class TaskList extends Component {
     //O state armazena o status das tarefas
     state = {
         showDoneTasks: true,
+        showModalAddTask: false,
         visibleTasks: [],
         tasks: [
             {
@@ -103,6 +105,7 @@ export default class TaskList extends Component {
 
         return (
             <View style={styles.container}>
+                <ModalAddTask isVisible={this.state.showModalAddTask} onCancel={() => this.setState({ showModalAddTask : false})}/>
                 <ImageBackground source={todayImage} style={styles.background}>
                     <View style={styles.iconBar}>
                         <TouchableOpacity onPress={this.toggleFilter}>
@@ -120,6 +123,9 @@ export default class TaskList extends Component {
                     renderItem={(obj) => <Task {...obj.item} toggleTask={this.toggleTask}/>}
                     />
                 </View>
+                <TouchableOpacity style={styles.addButton} onPress={() => this.setState({ showModalAddTask : true})} activeOpacity={0.7}>
+                    <Icon name="plus" size={20} color={commonStyles.colors.secondary}/>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -159,5 +165,16 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         justifyContent: 'flex-end',
         marginTop: Platform.OS == 'ios' ? 40 : 20
+    },
+    addButton: {
+        position: 'absolute',
+        right: 30,
+        bottom: 30,
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        backgroundColor: commonStyles.colors.primary,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })
